@@ -1,0 +1,46 @@
+@model StudentManagementSystem.Models.Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="page-header">
+    <h1>👤 Student Details</h1>
+    <a asp-action="Index" class="btn btn-outline">← Back to List</a>
+</div>
+
+<div class="detail-card">
+    <div class="detail-avatar">
+        <span>@Model.FirstName[0]@Model.LastName[0]</span>
+    </div>
+    <h2>@Model.FullName</h2>
+
+    <div class="detail-grid">
+        <div class="detail-item">
+            <label>Student ID</label>
+            <span>#@Model.Id</span>
+        </div>
+        <div class="detail-item">
+            <label>Email</label>
+            <span>@Model.Email</span>
+        </div>
+        <div class="detail-item">
+            <label>Phone Number</label>
+            <span>@Model.PhoneNumber</span>
+        </div>
+        <div class="detail-item">
+            <label>Course</label>
+            <span class="badge">@Model.Course</span>
+        </div>
+        <div class="detail-item">
+            <label>Enrollment Date</label>
+            <span>@Model.EnrollmentDate.ToString("dd MMMM yyyy")</span>
+        </div>
+    </div>
+
+    <div class="form-actions">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">✏️ Edit</a>
+        <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">🗑️ Delete</a>
+        <a asp-action="Index" class="btn btn-outline">← All Students</a>
+    </div>
+</div>

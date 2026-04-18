@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Student Management System</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <a href="/">🎓 Student Management System</a>
+            </div>
+            <ul class="nav-links">
+                <li><a asp-controller="Students" asp-action="Index">All Students</a></li>
+                <li><a asp-controller="Students" asp-action="Create" class="btn-nav">+ Add Student</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        @if (TempData["SuccessMessage"] != null)
+        {
+            <div class="alert alert-success">
+                ✅ @TempData["SuccessMessage"]
+            </div>
+        }
+        @RenderBody()
+    </main>
+
+    <footer>
+        <p>Student Management System &copy; @DateTime.Now.Year | Built with ASP.NET MVC &amp; Entity Framework</p>
+    </footer>
+</body>
+</html>

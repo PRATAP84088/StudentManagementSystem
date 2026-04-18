@@ -1,0 +1,66 @@
+@model IEnumerable<StudentManagementSystem.Models.Student>
+
+@{
+    ViewData["Title"] = "Students";
+}
+
+<div class="page-header">
+    <h1>📋 Student Records</h1>
+    <a asp-action="Create" class="btn btn-primary">+ Add New Student</a>
+</div>
+
+<div class="search-bar">
+    <form asp-action="Index" method="get">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]"
+               placeholder="Search by name, course or email..." class="search-input" />
+        <button type="submit" class="btn btn-secondary">Search</button>
+        @if (!string.IsNullOrEmpty(ViewData["CurrentFilter"]?.ToString()))
+        {
+            <a asp-action="Index" class="btn btn-outline">Clear</a>
+        }
+    </form>
+</div>
+
+@if (!Model.Any())
+{
+    <div class="empty-state">
+        <p>No students found. <a asp-action="Create">Add the first student.</a></p>
+    </div>
+}
+else
+{
+    <div class="table-wrapper">
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Course</th>
+                    <th>Enrolled On</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var student in Model)
+                {
+                    <tr>
+                        <td>@student.Id</td>
+                        <td><strong>@student.FullName</strong></td>
+                        <td>@student.Email</td>
+                        <td>@student.PhoneNumber</td>
+                        <td><span class="badge">@student.Course</span></td>
+                        <td>@student.EnrollmentDate.ToString("dd MMM yyyy")</td>
+                        <td class="action-links">
+                            <a asp-action="Details" asp-route-id="@student.Id" class="link-view">View</a>
+                            <a asp-action="Edit" asp-route-id="@student.Id" class="link-edit">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@student.Id" class="link-delete">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p class="record-count">Showing @Model.Count() student(s)</p>
+}

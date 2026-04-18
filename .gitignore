@@ -1,0 +1,59 @@
+## .NET gitignore
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio cache/options
+.vs/
+*.cache
+*.pidb
+*.userprefs
+
+# Rider
+.idea/
+
+# MSTest test results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Publish output
+[Pp]ublish/
+PublishOutputs/
+
+# NuGet
+*.nupkg
+**/[Pp]ackages/**
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+logs/
+*.log
+
+# Secrets (never commit these!)
+appsettings.Development.json
+secrets.json
